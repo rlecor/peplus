@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}PE+ | Admin Login{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container tiny">
+        <form method="POST" class="form-card">
+            <h1>Admin Login</h1>
+            <label>Password<input type="password" name="password" required></label>
+            <button class="button primary full" type="submit">Login</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

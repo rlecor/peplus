@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}PE+ | Preliminary Result{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container narrow">
+        <div class="result-card">
+            {% if submission.result_type == 'auto_offer' %}
+                <p class="eyebrow">Preliminary Offer Result</p>
+                <h1>{{ submission.business_name }}</h1>
+                <p class="lead">Based on the information provided, PE+ estimates the following preliminary non-binding offer range.</p>
+                <div class="offer-box">
+                    <span>PE+ Preliminary Offer Range</span>
+                    <strong>{{ submission.offer_low|money }} – {{ submission.offer_high|money }}</strong>
+                </div>
+            {% else %}
+                <p class="eyebrow">Manual Review Needed</p>
+                <h1>{{ submission.business_name }}</h1>
+                <p class="lead">Your business may still be a fit, but PE+ needs a manual review before showing a preliminary offer.</p>
+            {% endif %}
+
+            <div class="metrics-grid">
+                <div><span>Normalized Earnings</span><strong>{{ submission.normalized_earnings|money }}</strong></div>
+                <div><span>Deal Score</span><strong>{{ submission.deal_score }}/100</strong></div>
+                <div><span>Estimated Value Low</span><strong>{{ submission.valuation_low|money }}</strong></div>
+                <div><span>Estimated Value High</span><strong>{{ submission.valuation_high|money }}</strong></div>
+            </div>
+
+            {% if red_flags %}
+                <div class="red-flags">
+                    <h3>Review Items</h3>
+                    <ul>
+                        {% for flag in red_flags %}
+                            <li>{{ flag }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <div class="notice">
+                This result is not a binding offer. It is based only on seller-submitted information and is subject to document review, financial verification, diligence, buyer approval, and final transaction documents.
+            </div>
+            <div class="button-row">
+                <a class="button primary" href="{{ url_for('intake') }}">Start Another Estimate</a>
+                <a class="button secondary" href="{{ url_for('index') }}">Back Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

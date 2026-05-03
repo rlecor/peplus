@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}PE+ | Seller Intake{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container narrow">
+        <div class="page-heading">
+            <p class="eyebrow">Seller Intake</p>
+            <h1>Tell us about your business.</h1>
+            <p>This takes a few minutes. Use estimates if exact numbers are not available.</p>
+        </div>
+
+        <form method="POST" class="form-card">
+            <h2>Owner Contact</h2>
+            <div class="grid-2">
+                <label>First Name<input name="first_name" required></label>
+                <label>Last Name<input name="last_name" required></label>
+                <label>Email<input type="email" name="email" required></label>
+                <label>Phone<input name="phone"></label>
+            </div>
+
+            <h2>Business Profile</h2>
+            <div class="grid-2">
+                <label>Business Name<input name="business_name" required></label>
+                <label>Location<input name="location" placeholder="City, State"></label>
+                <label>Industry
+                    <select name="industry">
+                        <option value="home_services">Home Services</option>
+                        <option value="professional_services">Professional Services</option>
+                        <option value="healthcare_services">Healthcare Services</option>
+                        <option value="ecommerce">Ecommerce</option>
+                        <option value="saas">SaaS</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="restaurant_food">Restaurant / Food</option>
+                        <option value="retail">Retail</option>
+                        <option value="other">Other</option>
+                        <option value="cannabis">Cannabis / Regulated</option>
+                        <option value="gambling">Gambling</option>
+                        <option value="adult">Adult</option>
+                        <option value="firearms">Firearms</option>
+                    </select>
+                </label>
+                <label>Year Founded<input type="number" name="year_founded" placeholder="2014"></label>
+                <label>Employees<input type="number" name="employees" min="0"></label>
+                <label>Owner Hours Per Week<input type="number" name="owner_hours" min="0"></label>
+                <label>Is there a manager in place?
+                    <select name="has_manager">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </label>
+                <label>Recurring Revenue %<input type="number" name="recurring_revenue_pct" min="0" max="100" placeholder="25"></label>
+                <label>Top Customer Revenue %<input type="number" name="top_customer_pct" min="0" max="100" placeholder="15"></label>
+                <label>Revenue Trend
+                    <select name="revenue_trend">
+                        <option value="growing">Growing</option>
+                        <option value="flat">Flat</option>
+                        <option value="declining">Declining</option>
+                    </select>
+                </label>
+                <label>Legal or tax issues?
+                    <select name="legal_or_tax_issues">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </label>
+                <label>Debt issues?
+                    <select name="debt_issues">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </label>
+            </div>
+            <label>Reason for Selling<textarea name="reason_for_selling" rows="3"></textarea></label>
+
+            <h2>Financials</h2>
+            <p class="hint">Use annual or trailing twelve-month numbers.</p>
+            <div class="grid-2">
+                <label>Annual Revenue<input type="number" step="0.01" name="annual_revenue"></label>
+                <label>Gross Profit<input type="number" step="0.01" name="gross_profit"></label>
+                <label>Net Income<input type="number" step="0.01" name="net_income" required></label>
+                <label>Owner Salary<input type="number" step="0.01" name="owner_salary"></label>
+                <label>Interest Expense<input type="number" step="0.01" name="interest"></label>
+                <label>Taxes<input type="number" step="0.01" name="taxes"></label>
+                <label>Depreciation<input type="number" step="0.01" name="depreciation"></label>
+                <label>Amortization<input type="number" step="0.01" name="amortization"></label>
+                <label>Add-Backs / One-Time Expenses<input type="number" step="0.01" name="add_backs"></label>
+                <label>Replacement Manager Cost<input type="number" step="0.01" name="replacement_manager_cost" placeholder="0 if manager exists"></label>
+            </div>
+
+            <div class="notice">
+                By submitting, you understand that PE+ provides a preliminary non-binding indication only. Any offer is subject to verification, diligence, buyer approval, and final agreements.
+            </div>
+            <button class="button primary full" type="submit">Calculate Preliminary Offer</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

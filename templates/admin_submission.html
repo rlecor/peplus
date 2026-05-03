@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}PE+ | Submission Detail{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container narrow">
+        <a href="{{ url_for('admin_dashboard') }}">← Back to dashboard</a>
+        <div class="result-card">
+            <p class="eyebrow">Submission #{{ submission.id }}</p>
+            <h1>{{ submission.business_name }}</h1>
+            <p>{{ submission.first_name }} {{ submission.last_name }} · {{ submission.email }} · {{ submission.phone }}</p>
+            <div class="metrics-grid">
+                <div><span>Revenue</span><strong>{{ submission.annual_revenue|money }}</strong></div>
+                <div><span>Normalized Earnings</span><strong>{{ submission.normalized_earnings|money }}</strong></div>
+                <div><span>Deal Score</span><strong>{{ submission.deal_score }}/100</strong></div>
+                <div><span>Offer</span><strong>{{ submission.offer_low|money }} – {{ submission.offer_high|money }}</strong></div>
+            </div>
+            <h2>Business Details</h2>
+            <div class="detail-grid">
+                <p><strong>Industry:</strong> {{ submission.industry }}</p>
+                <p><strong>Location:</strong> {{ submission.location }}</p>
+                <p><strong>Year Founded:</strong> {{ submission.year_founded }}</p>
+                <p><strong>Employees:</strong> {{ submission.employees }}</p>
+                <p><strong>Owner Hours:</strong> {{ submission.owner_hours }}</p>
+                <p><strong>Manager:</strong> {{ submission.has_manager }}</p>
+                <p><strong>Recurring Revenue:</strong> {{ submission.recurring_revenue_pct }}%</p>
+                <p><strong>Top Customer:</strong> {{ submission.top_customer_pct }}%</p>
+                <p><strong>Revenue Trend:</strong> {{ submission.revenue_trend }}</p>
+                <p><strong>Legal/Tax Issues:</strong> {{ submission.legal_or_tax_issues }}</p>
+                <p><strong>Debt Issues:</strong> {{ submission.debt_issues }}</p>
+            </div>
+            <h2>Reason for Selling</h2>
+            <p>{{ submission.reason_for_selling or 'Not provided' }}</p>
+            {% if red_flags %}
+                <div class="red-flags">
+                    <h3>Review Items</h3>
+                    <ul>{% for flag in red_flags %}<li>{{ flag }}</li>{% endfor %}</ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

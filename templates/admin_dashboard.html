@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}PE+ | Admin Dashboard{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container wide">
+        <div class="admin-heading">
+            <div>
+                <p class="eyebrow">Admin</p>
+                <h1>Seller Submissions</h1>
+            </div>
+            <a class="button secondary" href="{{ url_for('admin_logout') }}">Logout</a>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Business</th>
+                        <th>Industry</th>
+                        <th>Revenue</th>
+                        <th>Earnings</th>
+                        <th>Score</th>
+                        <th>Result</th>
+                        <th>Offer Range</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in submissions %}
+                    <tr>
+                        <td>{{ s.id }}</td>
+                        <td>{{ s.business_name }}</td>
+                        <td>{{ s.industry }}</td>
+                        <td>{{ s.annual_revenue|money }}</td>
+                        <td>{{ s.normalized_earnings|money }}</td>
+                        <td>{{ s.deal_score }}</td>
+                        <td><span class="pill {{ s.result_type }}">{{ s.result_type.replace('_', ' ') }}</span></td>
+                        <td>{{ s.offer_low|money }} – {{ s.offer_high|money }}</td>
+                        <td><a href="{{ url_for('admin_submission', submission_id=s.id) }}">View</a></td>
+                    </tr>
+                    {% else %}
+                    <tr><td colspan="9">No submissions yet.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}

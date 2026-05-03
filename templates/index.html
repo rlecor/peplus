@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}PE+ | Instant Preliminary Business Offer{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="container hero-grid">
+        <div>
+            <p class="eyebrow">PE+ Conversations MVP</p>
+            <h1>Get a preliminary offer for your business in minutes.</h1>
+            <p class="hero-text">PE+ helps business owners estimate a potential acquisition offer using basic business, operational, and financial information.</p>
+            <div class="button-row">
+                <a class="button primary" href="{{ url_for('intake') }}">Get My Offer</a>
+                <a class="button secondary" href="#how-it-works">How It Works</a>
+            </div>
+        </div>
+        <div class="card hero-card">
+            <h3>What PE+ estimates</h3>
+            <ul>
+                <li>Normalized earnings</li>
+                <li>Deal quality score</li>
+                <li>Estimated business value</li>
+                <li>Preliminary offer range</li>
+                <li>Manual review flags</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="how-it-works" class="section">
+    <div class="container three-col">
+        <div class="card">
+            <span class="step">1</span>
+            <h3>Enter business details</h3>
+            <p>Provide industry, years in business, employees, owner involvement, customer concentration, and revenue trend.</p>
+        </div>
+        <div class="card">
+            <span class="step">2</span>
+            <h3>Add financials</h3>
+            <p>Input revenue, profit, owner salary, interest, taxes, depreciation, amortization, and add-backs.</p>
+        </div>
+        <div class="card">
+            <span class="step">3</span>
+            <h3>Receive result</h3>
+            <p>See a preliminary valuation and offer range, or get routed to manual review if the deal has red flags.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

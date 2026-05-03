@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PE+{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a href="{{ url_for('index') }}" class="logo">PE+</a>
+            <nav>
+                <a href="{{ url_for('intake') }}">Get Offer</a>
+                <a href="{{ url_for('admin_dashboard') }}">Admin</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="container flash-wrap">
+                    {% for message in messages %}
+                        <div class="flash">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>PE+ preliminary offers are non-binding and subject to verification, diligence, and final approval.</p>
+        </div>
+    </footer>
+</body>
+</html>
